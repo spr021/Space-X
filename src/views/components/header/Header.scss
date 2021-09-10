@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 50px;
+  padding: 16px;
+  img {
+    padding-left: 16px;
+    width: 36px;
+    height: 36px;
+  }
+  span {
+    padding-left: 8px;
+    font-size: 24px;
+    font-weight: 900;
+  }
+}
