@@ -1,0 +1,75 @@
+.true {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: #66c25a;
+  color: #316d00;
+  &:hover .tooltiptext {
+    visibility: visible;
+  }
+}
+
+.false {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: #ee5d5d;
+  color: #6d0000;
+  &:hover {
+    .tooltiptext {
+      visibility: visible;
+    }
+  }
+}
+
+.unstate {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: #808080;
+  color: #161616;
+  &:hover {
+    .tooltiptext {
+      visibility: visible;
+    }
+  }
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(71, 71, 71);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+  z-index: 10;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    z-index: 10;
+    border-color: rgb(71, 71, 71) transparent transparent transparent;
+  }
+}
