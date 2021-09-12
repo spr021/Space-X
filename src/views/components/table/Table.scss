@@ -1,5 +1,6 @@
 .wrap-table {
-  width: 800px;
+  min-width: 600px;
+  flex-grow: 1;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
@@ -13,12 +14,13 @@
       top: 0;
       left: 0;
       th {
+        white-space: nowrap;
         padding-top: 18px;
         padding-bottom: 18px;
       }
     }
     .table-body {
-      max-height: 585px;
+      max-height: 80vh;
       overflow: auto;
       td {
         padding-top: 16px;
@@ -41,24 +43,23 @@
       line-height: 1.4;
     }
     .column1 {
-      width: 33%;
+      width: 14%;
       padding-left: 40px;
     }
-
     .column2 {
-      width: 13%;
-    }
-
-    .column3 {
-      width: 22%;
-    }
-
-    .column4 {
       width: 19%;
     }
-
+    .column3 {
+      width: 17%;
+    }
+    .column4 {
+      width: 15%;
+    }
     .column5 {
-      width: 13%;
+      width: 19%;
+    }
+    .column6 {
+      width: 12%;
     }
   }
 }
