@@ -23,8 +23,8 @@ function Table(props) {
         <div className="table-body">
           <table>
             <tbody>
-              {props.data.map(launch => (
-                <tr key={launch.flight_number}>
+              {props.data.map((launch, index) => (
+                <tr key={index}>
                   <td className="column1">{launch.flight_number}</td>
                   <td className="column2">{ConvertTimeStampToLocal(launch.launch_date_unix)}</td>
                   <td className="column3">{launch.rocket.rocket_name}</td>
