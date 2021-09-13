@@ -3,6 +3,7 @@ import Home from "./views/pages/Home";
 import AllLaunches from "./views/pages/all-launches/AllLaunches"
 import PastLaunches from "./views/pages/past-launches/PastLaunches"
 import UpcomingLaunches from "./views/pages/upcoming-launches/UpcomingLaunches"
+import NotFound404 from "./views/pages/not-found-404/NotFound404"
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <UpcomingLaunches />
         </Route>
         <Route path="*">
-          {/* <NotFound404 /> */}
+          <NotFound404 />
         </Route>
       </Switch>
     </Router>

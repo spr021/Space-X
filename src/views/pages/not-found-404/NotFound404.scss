@@ -1,0 +1,47 @@
+.notfound {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 64px;
+  &::after {
+    position: absolute;
+    z-index: -2;
+    top: 12%;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    content: "";
+    background-color: #BDCBFB;
+    transform: rotate(-15deg);
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 70%;
+    left: -50%;
+    z-index: -1;
+    background-color: #849AF8;
+    transform: rotate(15deg);
+  }
+  h1 {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    letter-spacing: -40px;
+    font-size: 300px;
+  }
+  img {
+    width: 380px;
+    height: 380px;
+    margin-top: 80px;
+  }
+  .mars {
+    width: 160px;
+    height: 160px;
+    top: 16px;
+    left: 48px;
+    position: absolute;
+  }
+}
