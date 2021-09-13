@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./views/pages/Home";
 import AllLaunches from "./views/pages/all-launches/AllLaunches"
+import PastLaunches from "./views/pages/past-launches/PastLaunches"
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <AllLaunches />
         </Route>
         <Route exact path="/past-launches">
-          {/* <PastLaunches /> */}
+          <PastLaunches />
         </Route>
         <Route exact path="/upcoming-launches">
           {/* <UpcomingLaunches /> */}
