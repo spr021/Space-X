@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./views/pages/Home";
 import AllLaunches from "./views/pages/all-launches/AllLaunches"
 import PastLaunches from "./views/pages/past-launches/PastLaunches"
+import UpcomingLaunches from "./views/pages/upcoming-launches/UpcomingLaunches"
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <PastLaunches />
         </Route>
         <Route exact path="/upcoming-launches">
-          {/* <UpcomingLaunches /> */}
+          <UpcomingLaunches />
         </Route>
         <Route path="*">
           {/* <NotFound404 /> */}
