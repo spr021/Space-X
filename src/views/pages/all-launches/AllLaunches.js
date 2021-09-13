@@ -5,6 +5,8 @@ import Search from "../../components/search/Search"
 import Filter from "../../components/filter/Filter"
 import Axios from "../../../Axios"
 import { useSearch, useFilter } from "../../../utils/Utils"
+import Menu from "../../components/menu/Menu"
+import Header from "../../components/header/Header"
 
 function AllLaunches() {
   const [launchData, setLaunchData] = useState([])
@@ -30,14 +32,20 @@ function AllLaunches() {
   return (
     <article className="all-launches">
       <Table data={filterList()} />
-      <aside>
-        <Search setSearch={requestSearch} />
-        <Filter
-          filters={filters}
-          setFilter={requestFilter}
-          filterList={launchData}
-        />
-      </aside>
+      <div>
+        <aside>
+          <Header />
+          <Menu vertical />
+        </aside>
+        <aside>
+          <Search setSearch={requestSearch} />
+          <Filter
+            filters={filters}
+            setFilter={requestFilter}
+            filterList={launchData}
+          />
+        </aside>
+      </div>
     </article>
   )
 }
