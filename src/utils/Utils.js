@@ -1,4 +1,5 @@
 import ConvertTimeStampToLocal from "./ConvertTimeStampToLocal"
 import useSearch from "./useSearch"
+import useFilter from "./useFilter"
 
-export { ConvertTimeStampToLocal, useSearch }
+export { ConvertTimeStampToLocal, useSearch, useFilter }
