@@ -1,44 +1,45 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import "./AllLaunches.scss"
 import Table from "../../components/table/Table"
 import Search from "../../components/search/Search"
-import Filter from "../../components/filter/Filter";
-import Axios from "../../../Axios";
-import { useSearch, useFilter } from "../../../utils/Utils";
+import Filter from "../../components/filter/Filter"
+import Axios from "../../../Axios"
+import { useSearch, useFilter } from "../../../utils/Utils"
 
 function AllLaunches() {
-const [launchData, setLaunchData] = useState([])
-const [finalResult, setFinalResult] = useState(launchData)
-const {items, requestSearch} = useSearch(launchData)
-const {filterItem, filterValue, requestFilter} = useFilter(launchData)
+  const [launchData, setLaunchData] = useState([])
+  const { hasSearchCondition, requestSearch } = useSearch()
+  const { hasFilterCondition, filters, requestFilter } = useFilter()
 
-useEffect(() => {
-  Axios.get("launches/")
-  .then((resp) => {
-    setLaunchData(resp.data)
-    setFinalResult(resp.data)
-  })
-},[])
+  useEffect(() => {
+    Axios.get("launches/").then((resp) => {
+      setLaunchData(resp.data)
+    })
+  }, [])
 
-useEffect(() => {
-  setFinalResult(filterItem)
-  // eslint-disable-next-line
-},[requestFilter])
-
-useEffect(() => {
-  setFinalResult(items)
-  // eslint-disable-next-line
-},[requestSearch])
+  const filterList = () => {
+    let result = []
+    launchData.forEach((item) => {
+      if (!hasFilterCondition(item)) return
+      if (!hasSearchCondition(item)) return
+      result.push(item)
+    })
+    return result
+  }
 
   return (
     <article className="all-launches">
-      <Table data={finalResult} />
+      <Table data={filterList()} />
       <aside>
         <Search setSearch={requestSearch} />
-        <Filter filterValue={filterValue} setFilter={requestFilter} filterList={launchData} />
+        <Filter
+          filters={filters}
+          setFilter={requestFilter}
+          filterList={launchData}
+        />
       </aside>
     </article>
-  );
+  )
 }
 
-export default AllLaunches;
+export default AllLaunches

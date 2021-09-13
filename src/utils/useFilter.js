@@ -1,55 +1,18 @@
-import { useMemo, useState } from "react"
+import { useState } from "react"
 
-const useFilter = (items) => {
-  const [filterValue, setFilterValue] = useState([])
+const useFilter = () => {
+  const [filters, setFilters] = useState([])
 
-  const filterItem = useMemo(() => {
-    let filterableItemsByfilter = []
-
-    if (filterValue.length) {
-      filterValue.forEach((filterEl) => {
-        let filterableItems = [...items]
-        filterableItems = filterableItems
-          .filter((item) => {
-            return item.launch_site.site_name
-              .toLowerCase()
-              .includes(filterEl.toLowerCase())
-          })
-          .sort((a, b) => {
-            if (
-              a.launch_site.site_name
-                .toLowerCase()
-                .indexOf(filterEl.toLowerCase()) >
-              b.launch_site.site_name
-                .toLowerCase()
-                .indexOf(filterEl.toLowerCase())
-            ) {
-              return 1
-            } else if (
-              a.launch_site.site_name
-                .toLowerCase()
-                .indexOf(filterEl.toLowerCase()) <
-              b.launch_site.site_name
-                .toLowerCase()
-                .indexOf(filterEl.toLowerCase())
-            ) {
-              return -1
-            } else {
-              if (a.launch_site.site_name > b.launch_site.site_name) return 1
-              else return -1
-            }
-          })
-          filterableItemsByfilter.push(...filterableItems)
-      })
-    }
-    return filterableItemsByfilter
-  }, [items, filterValue])
-
-  const requestFilter = (value) => {
-    setFilterValue(value)
+  const hasFilterCondition = (item) => {
+    if (!filters.length) return true
+    return filters.includes(item.launch_site.site_name)
   }
 
-  return { filterItem, filterValue, requestFilter }
+  const requestFilter = (value) => {
+    setFilters(value)
+  }
+
+  return { hasFilterCondition, filters, requestFilter }
 }
 
 export default useFilter
