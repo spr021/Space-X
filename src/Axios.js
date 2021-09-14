@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const Axios = axios.create({
-  baseURL: 'https://api.spacexdata.com/v3/',
+  baseURL: process.env.REACT_APP_DOMAIN_NAME,
   timeout: 10000,
 })
 

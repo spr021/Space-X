@@ -1,7 +1,7 @@
 {
   "name": "space-x",
   "version": "0.1.0",
-  "homepage": "http://spr021.github.io/Space-X",
+  "homepage": "http://spr021.github.io",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
