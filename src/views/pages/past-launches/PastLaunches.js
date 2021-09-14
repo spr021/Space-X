@@ -7,15 +7,22 @@ import Axios from "../../../Axios"
 import { useSearch, useFilter } from "../../../utils/Utils"
 import Header from "../../components/header/Header"
 import Menu from "../../components/menu/Menu"
+import Loading from "../../components/loading/Loading"
 
 function PastLaunches() {
   const [launchData, setLaunchData] = useState([])
+  const [loading, setLoading] = useState(true)
   const { hasSearchCondition, requestSearch } = useSearch()
   const { hasFilterCondition, filters, requestFilter } = useFilter()
 
   useEffect(() => {
-    Axios.get("launches/past").then((resp) => {
+    setLoading(true)
+    Axios.get("launches/past")
+    .then((resp) => {
       setLaunchData(resp.data)
+    })
+    .finally(() => {
+      setLoading(false)
     })
   }, [])
 
@@ -29,7 +36,7 @@ function PastLaunches() {
     return result
   }
 
-  return (
+  return loading ? (<Loading />) : (
     <article className="past-launches">
       <Table data={filterList()} />
       <div>

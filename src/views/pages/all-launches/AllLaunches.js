@@ -7,15 +7,22 @@ import Axios from "../../../Axios"
 import { useSearch, useFilter } from "../../../utils/Utils"
 import Menu from "../../components/menu/Menu"
 import Header from "../../components/header/Header"
+import Loading from "../../components/loading/Loading"
 
 function AllLaunches() {
   const [launchData, setLaunchData] = useState([])
+  const [loading, setLoading] = useState(true)
   const { hasSearchCondition, requestSearch } = useSearch()
   const { hasFilterCondition, filters, requestFilter } = useFilter()
 
   useEffect(() => {
-    Axios.get("launches/").then((resp) => {
+    setLoading(true)
+    Axios.get("launches/")
+    .then((resp) => {
       setLaunchData(resp.data)
+    })
+    .finally(() => {
+      setLoading(false)
     })
   }, [])
 
@@ -29,7 +36,7 @@ function AllLaunches() {
     return result
   }
 
-  return (
+  return loading ? (<Loading />) : (
     <article className="all-launches">
       <Table data={filterList()} />
       <div>
