@@ -26,6 +26,8 @@ function AllLaunches() {
     })
   }, [])
 
+
+  //checks all conditions on each item
   const filterList = () => {
     let result = []
     launchData.forEach((item) => {
