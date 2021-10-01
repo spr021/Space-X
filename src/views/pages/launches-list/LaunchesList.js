@@ -38,7 +38,7 @@ function LaunchesList({type = ""}) {
   return loading ? (<Loading />) : (
     <article className="launches">
       <Table data={filterList()} />
-      <div>
+      <div className="boxes">
         <aside>
           <Header />
           <Menu vertical />
