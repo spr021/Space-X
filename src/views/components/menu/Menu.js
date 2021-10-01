@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 import "./Menu.scss"
 
-function Menu(props) {
+function Menu({vertical}) {
   return (
-    <ul className={`menu ${props.vertical && "menu-vertical"}`}>
+    <ul className={`menu ${vertical ? "menu-vertical" : ""}`}>
       <Link to="all-launches">
         <li>All Launches</li>
       </Link>
