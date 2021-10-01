@@ -29,13 +29,10 @@ function AllLaunches() {
 
   //checks all conditions on each item
   const filterList = () => {
-    let result = []
-    launchData.forEach((item) => {
-      if (!hasFilterCondition(item)) return
-      if (!hasSearchCondition(item)) return
-      result.push(item)
-    })
-    return result
+    return launchData.filter((item) => 
+      hasFilterCondition(item) &&
+      hasSearchCondition(item)
+    )
   }
 
   return loading ? (<Loading />) : (
