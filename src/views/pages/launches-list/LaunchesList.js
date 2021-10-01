@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import "./AllLaunches.scss"
+import "./LaunchesList.scss"
 import Table from "../../components/table/Table"
 import Search from "../../components/search/Search"
 import Filter from "../../components/filter/Filter"
@@ -9,7 +9,7 @@ import Menu from "../../components/menu/Menu"
 import Header from "../../components/header/Header"
 import Loading from "../../components/loading/Loading"
 
-function AllLaunches() {
+function LaunchesList({type = ""}) {
   const [launchData, setLaunchData] = useState([])
   const [loading, setLoading] = useState(true)
   const { hasSearchCondition, requestSearch } = useSearch()
@@ -17,14 +17,14 @@ function AllLaunches() {
 
   useEffect(() => {
     setLoading(true)
-    Axios.get("launches/")
+    Axios.get("launches/" + type)
     .then((resp) => {
       setLaunchData(resp.data)
     })
     .finally(() => {
       setLoading(false)
     })
-  }, [])
+  }, [type])
 
 
   //checks all conditions on each item
@@ -36,7 +36,7 @@ function AllLaunches() {
   }
 
   return loading ? (<Loading />) : (
-    <article className="all-launches">
+    <article className="launches">
       <Table data={filterList()} />
       <div>
         <aside>
@@ -56,4 +56,4 @@ function AllLaunches() {
   )
 }
 
-export default AllLaunches
+export default LaunchesList
