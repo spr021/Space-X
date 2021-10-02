@@ -4,6 +4,7 @@ import "./Filter.scss"
 function Filter(props) {
   const [siteName, setSiteName] = useState([])
 
+  // sets filter based on consumed events
   const filter = (e) => {
     if (props.filters.includes(e.target.id)) {
       props.setFilter(props.filters.filter((item) => item !== e.target.id))
@@ -13,6 +14,7 @@ function Filter(props) {
   }
 
   useEffect(() => {
+    // gets full names and removes duplicate items
     setSiteName([
       ...new Set(
         props.filterList.map((launch) => launch.launch_site.site_name)

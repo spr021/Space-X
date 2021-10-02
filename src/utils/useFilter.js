@@ -1,6 +1,8 @@
 import { useState } from "react"
 
 const useFilter = () => {
+
+  // filters <Array<Site_Name>>
   const [filters, setFilters] = useState([])
 
   const hasFilterCondition = (item) => {

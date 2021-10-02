@@ -1,8 +1,6 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./views/pages/Home";
-import AllLaunches from "./views/pages/all-launches/AllLaunches"
-import PastLaunches from "./views/pages/past-launches/PastLaunches"
-import UpcomingLaunches from "./views/pages/upcoming-launches/UpcomingLaunches"
+import LaunchesList from "./views/pages/launches-list/LaunchesList"
 import NotFound404 from "./views/pages/not-found-404/NotFound404"
 
 function App() {
@@ -13,13 +11,13 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/all-launches">
-          <AllLaunches />
+          <LaunchesList />
         </Route>
         <Route exact path="/past-launches">
-          <PastLaunches />
+          <LaunchesList type="past" />
         </Route>
         <Route exact path="/upcoming-launches">
-          <UpcomingLaunches />
+          <LaunchesList type="upcoming" />
         </Route>
         <Route path="*">
           <NotFound404 />

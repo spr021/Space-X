@@ -1,4 +1,4 @@
-.upcoming-launches {
+.launches {
   display: flex;
   align-items: flex-start;
   justify-content: stretch;
@@ -30,7 +30,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 300px;
+    min-width: 210px;
     min-height: 100px;
     padding: 16px;
     margin-left: 16px;
@@ -39,5 +39,12 @@
     border-radius: 10px;
     box-sizing: border-box;
     box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  }
+  @media screen and (max-width: 650px) {
+    flex-direction: column-reverse;
+    .boxes {
+      display: flex;
+      flex-direction: row;
+    }
   }
 }
