@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Space-X/static/css/main.f82670c6.chunk.css",
-    "main.js": "/Space-X/static/js/main.6ab3f978.chunk.js",
-    "main.js.map": "/Space-X/static/js/main.6ab3f978.chunk.js.map",
+    "main.js": "/Space-X/static/js/main.bd252bc0.chunk.js",
+    "main.js.map": "/Space-X/static/js/main.bd252bc0.chunk.js.map",
     "runtime-main.js": "/Space-X/static/js/runtime-main.3701cb96.js",
     "runtime-main.js.map": "/Space-X/static/js/runtime-main.3701cb96.js.map",
     "static/js/2.3e5d2401.chunk.js": "/Space-X/static/js/2.3e5d2401.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3701cb96.js",
     "static/js/2.3e5d2401.chunk.js",
     "static/css/main.f82670c6.chunk.css",
-    "static/js/main.6ab3f978.chunk.js"
+    "static/js/main.bd252bc0.chunk.js"
   ]
 }
