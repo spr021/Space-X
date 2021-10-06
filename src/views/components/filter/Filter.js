@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import "./Filter.scss"
 
-function Filter(props) {
+function Filter({filterList, filters, setFilter}) {
   const [siteName, setSiteName] = useState([])
 
   // sets filter based on consumed events
   const filter = (e) => {
-    if (props.filters.includes(e.target.id)) {
-      props.setFilter(props.filters.filter((item) => item !== e.target.id))
+    if (filters.includes(e.target.id)) {
+      setFilter(filters.filter((item) => item !== e.target.id))
     } else {
-      props.setFilter([...props.filters, e.target.id])
+      setFilter([...filters, e.target.id])
     }
   }
 
@@ -17,10 +17,10 @@ function Filter(props) {
     // gets full names and removes duplicate items
     setSiteName([
       ...new Set(
-        props.filterList.map((launch) => launch.launch_site.site_name)
+        filterList.map((launch) => launch.launch_site.site_name)
       ),
     ])
-  }, [props])
+  }, [filterList, filters])
 
   return (
     <div className="filter">
