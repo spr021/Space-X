@@ -1,4 +1,4 @@
-# Space X Launches time
+# Space X launch times
 Simple minimal web app to give information about Space X launches.
 
 ![Home Page](./preview.png)
@@ -14,6 +14,6 @@ Space X is an app that attempts to use the latest cutting edge libraries and too
  * Uses [Axios](https://axios-http.com/) for HTTP request.
  * Uses Clean architecture with modular and clean structure
 
- ## See Web App
+ ## Web App
 
  [Space X](https://spr021.github.io/Space-X/)
