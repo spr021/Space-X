@@ -5,6 +5,7 @@ import Search from "../../components/search/Search"
 import Filter from "../../components/filter/Filter"
 import Axios from "../../../Axios"
 import { useSearch, useFilter } from "../../../utils/Utils"
+import { transformLaunchData } from "../../../utils/transformLaunchData"
 import Menu from "../../components/menu/Menu"
 import Header from "../../components/header/Header"
 import Loading from "../../components/loading/Loading"
@@ -16,14 +17,42 @@ function LaunchesList({type = ""}) {
   const { hasFilterCondition, filters, requestFilter } = useFilter()
 
   useEffect(() => {
-    setLoading(true)
-    Axios.get("launches/" + type)
-    .then((resp) => {
-      setLaunchData(resp.data)
-    })
-    .finally(() => {
-      setLoading(false)
-    })
+    const fetchLaunches = async () => {
+      setLoading(true);
+      
+      try {
+        const endpoints = {
+          past: "launch/previous/?search=SpaceX&limit=100",
+          upcoming: "launch/upcoming/?search=SpaceX&limit=100"
+        };
+
+        // Fetch all launches if no specific type is provided
+        if (!type) {
+          const [pastResp, upcomingResp] = await Promise.all([
+            Axios.get(endpoints.past),
+            Axios.get(endpoints.upcoming)
+          ]);
+          
+          const allLaunches = [
+            ...transformLaunchData(pastResp.data),
+            ...transformLaunchData(upcomingResp.data)
+          ];
+          setLaunchData(allLaunches);
+        } else {
+          // Fetch specific type or default to upcoming
+          const endpoint = endpoints[type] || endpoints.upcoming;
+          const response = await Axios.get(endpoint);
+          setLaunchData(transformLaunchData(response.data));
+        }
+      } catch (error) {
+        console.error("Error fetching launch data:", error);
+        setLaunchData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLaunches();
   }, [type])
 
 
