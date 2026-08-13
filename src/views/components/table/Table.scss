@@ -29,6 +29,13 @@
       tr:nth-child(even) {
         background-color: #f8f6ff;
       }
+      .clickable-row {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        &:hover {
+          background-color: #e8e6ff !important;
+        }
+      }
     }
     th {
       font-size: 18px;
