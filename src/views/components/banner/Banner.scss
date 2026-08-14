@@ -11,7 +11,8 @@
     width: 100%;
     height: 100%;
     content: "";
-    background-color: #BDCBFB;
+    background-color: var(--accent-secondary);
+    transition: background-color 0.3s ease;
   }
   &::before {
     content: "";
@@ -21,8 +22,9 @@
     top: 70%;
     left: -50%;
     z-index: -1;
-    background-color: #849AF8;
+    background-color: var(--accent-primary);
     transform: rotate(-5deg);
+    transition: background-color 0.3s ease;
   }
   h1 {
     font-size: 64px;

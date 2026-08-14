@@ -11,8 +11,9 @@
     width: 200%;
     height: 200%;
     content: "";
-    background-color: #BDCBFB;
+    background-color: var(--accent-secondary);
     transform: rotate(-20deg);
+    transition: background-color 0.3s ease;
   }
   &::before {
     content: "";
@@ -22,8 +23,9 @@
     top: 70%;
     left: -50%;
     z-index: -1;
-    background-color: #849AF8;
+    background-color: var(--accent-primary);
     transform: rotate(5deg);
+    transition: background-color 0.3s ease;
   }
   aside {
     display: flex;
@@ -35,10 +37,11 @@
     padding: 16px;
     margin-left: 16px;
     margin-bottom: 16px;
-    background-color: white;
+    background-color: var(--surface);
     border-radius: 10px;
     box-sizing: border-box;
-    box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 40px 0px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
   @media screen and (max-width: 650px) {
     flex-direction: column-reverse;

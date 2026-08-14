@@ -12,6 +12,21 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Space X</title>
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem("spacex-theme");
+          var theme =
+            storedTheme === "light" || storedTheme === "dark"
+              ? storedTheme
+              : window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
