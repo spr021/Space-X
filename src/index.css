@@ -37,6 +37,57 @@ body {
   overflow: hidden;
 	line-height: 1;
   font-family: Lato-Regular;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme tokens - light theme (default) */
+:root {
+  --bg-body: #ffffff;
+  --surface: #ffffff;
+  --surface-alt: #f8f6ff;
+  --surface-hover: #e8e6ff;
+  --border-color: #aaa;
+  --accent-primary: #849AF8;
+  --accent-secondary: #BDCBFB;
+  --accent-header: #6c7ae0;
+  --text-primary: #2f2f2f;
+  --text-secondary: #808080;
+  --text-on-accent: #ffffff;
+  --menu-text: #ffffff;
+  --menu-border: #ffffff;
+  --menu-hover-bg: #ffffff;
+  --menu-hover-text: #2f2f2f;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --status-success-bg: #66c25a;
+  --status-success-text: #316d00;
+  --status-fail-bg: #ee5d5d;
+  --status-fail-text: #6d0000;
+  --status-unknown-bg: #808080;
+  --status-unknown-text: #161616;
+  --tooltip-bg: rgb(71, 71, 71);
+  --tooltip-text: #ffffff;
+}
+
+/* Theme tokens - dark theme */
+:root[data-theme="dark"] {
+  --bg-body: #12122b;
+  --surface: #1e1e38;
+  --surface-alt: #24244a;
+  --surface-hover: #2b2b56;
+  --border-color: #4a4a6e;
+  --accent-primary: #5b6fd8;
+  --accent-secondary: #3d4a8a;
+  --accent-header: #4a55b8;
+  --text-primary: #e6e6f2;
+  --text-secondary: #a6a6bf;
+  --text-on-accent: #ffffff;
+  --menu-text: #ffffff;
+  --menu-border: #ffffff;
+  --menu-hover-bg: #2b2b56;
+  --menu-hover-text: #e6e6f2;
+  --shadow-color: rgba(0, 0, 0, 0.4);
 }
 ol, ul {
 	list-style: none;

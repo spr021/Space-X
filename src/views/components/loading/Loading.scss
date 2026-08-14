@@ -36,17 +36,17 @@
   left: 20px;
 }
 .ldio-fk74g0zhkj5 div:nth-child(1) {
-  background: #849AF8;
+  background: var(--accent-primary);
   animation: ldio-fk74g0zhkj5 1s linear infinite;
   animation-delay: -0.5s;
 }
 .ldio-fk74g0zhkj5 div:nth-child(2) {
-  background: #BDCBFB;
+  background: var(--accent-secondary);
   animation: ldio-fk74g0zhkj5 1s linear infinite;
   animation-delay: 0s;
 }
 .ldio-fk74g0zhkj5 div:nth-child(3) {
-  background: #849AF8;
+  background: var(--accent-primary);
   animation: ldio-fk74g0zhkj5-o 1s linear infinite;
   animation-delay: -0.5s;
 }
@@ -57,7 +57,8 @@
   height: 200px;
   display: inline-block;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--surface);
+  transition: background-color 0.3s ease;
 }
 .ldio-fk74g0zhkj5 {
   width: 100%;

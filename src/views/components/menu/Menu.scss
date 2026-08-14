@@ -13,11 +13,11 @@
     cursor: pointer;
     transition: 0.5s;
     border-radius: 50px;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid var(--menu-border);
+    color: var(--menu-text);
     &:hover {
-      background-color: white;
-      color: black;
+      background-color: var(--menu-hover-bg);
+      color: var(--menu-hover-text);
       transition: 0.5s;
     }
   }
@@ -27,6 +27,6 @@
   flex-direction: column;
   align-items: flex-start;
   li {
-    color: black;
+    color: var(--text-primary);
   }
 }
