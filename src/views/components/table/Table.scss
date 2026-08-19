@@ -27,6 +27,13 @@
         padding-top: 16px;
         padding-bottom: 16px;
       }
+      tr {
+        cursor: pointer;
+        &:focus {
+          outline: 2px solid var(--accent-primary);
+          outline-offset: -2px;
+        }
+      }
       tr:nth-child(even) {
         background-color: var(--surface-alt);
         transition: background-color 0.3s ease;
