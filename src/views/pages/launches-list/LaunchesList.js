@@ -9,51 +9,66 @@ import { transformLaunchData } from "../../../utils/transformLaunchData"
 import Menu from "../../components/menu/Menu"
 import Header from "../../components/header/Header"
 import Loading from "../../components/loading/Loading"
+import Pagination from "../../components/pagination/Pagination"
+
+const PAGE_SIZE = 10
 
 function LaunchesList({type = ""}) {
   const [launchData, setLaunchData] = useState([])
   const [loading, setLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalLaunches, setTotalLaunches] = useState(0)
   const { hasSearchCondition, requestSearch } = useSearch()
   const { hasFilterCondition, filters, requestFilter } = useFilter()
 
   useEffect(() => {
+    setCurrentPage(1)
+  }, [type])
+
+  useEffect(() => {
+    let ignoreResponse = false
+
     const fetchLaunches = async () => {
-      setLoading(true);
+      setLoading(true)
       
       try {
         const endpoints = {
-          past: "launch/previous/?search=SpaceX&limit=100",
-          upcoming: "launch/upcoming/?search=SpaceX&limit=100"
-        };
-
-        // Fetch all launches if no specific type is provided
-        if (!type) {
-          const [pastResp, upcomingResp] = await Promise.all([
-            Axios.get(endpoints.past),
-            Axios.get(endpoints.upcoming)
-          ]);
-          
-          const allLaunches = [
-            ...transformLaunchData(pastResp.data),
-            ...transformLaunchData(upcomingResp.data)
-          ];
-          setLaunchData(allLaunches);
-        } else {
-          // Fetch specific type or default to upcoming
-          const endpoint = endpoints[type] || endpoints.upcoming;
-          const response = await Axios.get(endpoint);
-          setLaunchData(transformLaunchData(response.data));
+          all: "launch/",
+          past: "launch/previous/",
+          upcoming: "launch/upcoming/"
         }
-      } catch (error) {
-        console.error("Error fetching launch data:", error);
-        setLaunchData([]);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchLaunches();
-  }, [type])
+        const offset = (currentPage - 1) * PAGE_SIZE
+        const endpoint = endpoints[type] || endpoints.all
+        const response = await Axios.get(endpoint, {
+          params: {
+            search: "SpaceX",
+            limit: PAGE_SIZE,
+            offset,
+          },
+        })
+
+        if (ignoreResponse) return
+
+        setLaunchData(transformLaunchData(response.data, offset))
+        setTotalLaunches(response.data.count || 0)
+      } catch (error) {
+        if (ignoreResponse) return
+
+        console.error("Error fetching launch data:", error);
+        setLaunchData([])
+        setTotalLaunches(0)
+      } finally {
+        if (!ignoreResponse) setLoading(false)
+      }
+    }
+
+    fetchLaunches()
+
+    return () => {
+      ignoreResponse = true
+    }
+  }, [type, currentPage])
 
 
   //checks all conditions on each item
@@ -66,7 +81,15 @@ function LaunchesList({type = ""}) {
 
   return loading ? (<Loading />) : (
     <article className="launches">
-      <Table data={filterList()} />
+      <div className="launch-results">
+        <Table data={filterList()} />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(totalLaunches / PAGE_SIZE)}
+          totalItems={totalLaunches}
+          onPageChange={setCurrentPage}
+        />
+      </div>
       <div className="boxes">
         <aside>
           <Header />
