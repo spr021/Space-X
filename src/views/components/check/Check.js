@@ -9,7 +9,7 @@ function Check({check = false}) {
   }
 
   if (check === null) {
-    return (<div className="unstate"><span className="tooltiptext">Un State</span><FontAwesomeIcon icon={faMinus} /></div>)
+    return (<div className="unstate"><span className="tooltiptext">Unknown</span><FontAwesomeIcon icon={faMinus} /></div>)
   }
 
   return (

@@ -1,6 +1,7 @@
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./views/pages/Home";
 import LaunchesList from "./views/pages/launches-list/LaunchesList"
+import LaunchDetails from "./views/pages/launch-details/LaunchDetails"
 import NotFound404 from "./views/pages/not-found-404/NotFound404"
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route exact path="/upcoming-launches">
           <LaunchesList type="upcoming" />
+        </Route>
+        <Route exact path="/launch/:id">
+          <LaunchDetails />
         </Route>
         <Route path="*">
           <NotFound404 />
