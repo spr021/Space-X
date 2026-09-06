@@ -46,13 +46,13 @@ export const transformSingleLaunch = (launch) => {
  * Transforms Space Devs API data to match the old SpaceX API schema
  * This ensures backward compatibility with existing components
  */
-export const transformLaunchData = (spaceDevsData) => {
+export const transformLaunchData = (spaceDevsData, startingIndex = 0) => {
   if (!spaceDevsData || !spaceDevsData.results) {
     return [];
   }
 
   return spaceDevsData.results.map((launch, index) => ({
     ...transformSingleLaunch(launch),
-    flight_number: launch.flight_number || index + 1,
+    flight_number: launch.flight_number || startingIndex + index + 1,
   }));
 };

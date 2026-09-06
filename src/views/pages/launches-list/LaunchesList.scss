@@ -3,6 +3,10 @@
   align-items: flex-start;
   justify-content: stretch;
   padding: 36px;
+  .launch-results {
+    min-width: 600px;
+    flex-grow: 1;
+  }
   &::after {
     position: absolute;
     z-index: -2;
@@ -45,6 +49,9 @@
   }
   @media screen and (max-width: 650px) {
     flex-direction: column-reverse;
+    .launch-results {
+      width: 100%;
+    }
     .boxes {
       display: flex;
       flex-direction: row;
